@@ -1,6 +1,9 @@
+import { useCycles } from '../../context/Cycles/useCycles'
 import { HistoryContainer, HistoryList, StatusTask } from './styles'
 
 export function History() {
+  const { cycles } = useCycles()
+
   return (
     <HistoryContainer>
       <h1>Meu histórico</h1>
@@ -17,14 +20,18 @@ export function History() {
           </thead>
 
           <tbody>
-            <tr>
-              <td>Conserto de débitos técnicos </td>
-              <td>25 minutos</td>
-              <td>Há cerca de 2 meses</td>
-              <td>
-                <StatusTask statusColor="red">Interrompido</StatusTask>
-              </td>
-            </tr>
+            {cycles.map((cycle) => {
+              return (
+                <tr key={cycle.id}>
+                  <td>{cycle.task} </td>
+                  <td>25 minutos</td>
+                  <td>Há cerca de 2 meses</td>
+                  <td>
+                    <StatusTask statusColor="red">Interrompido</StatusTask>
+                  </td>
+                </tr>
+              )
+            })}
           </tbody>
         </table>
       </HistoryList>
