@@ -13,9 +13,8 @@ interface CyclesContextType {
   amountSecondsPassed: number
   createNewCycle: (data: CreateCycleData) => void
   markCurrentCycleAsFinished: () => void
-  handleInterruptCurrentCycle: () => void
+  interruptCurrentCycle: () => void
   setSecondsPassed: (seconds: number) => void
-  setCycleAsActive: (cycleId: string) => void
 }
 
 export const CyclesContext = createContext({} as CyclesContextType)
