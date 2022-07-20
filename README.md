@@ -10,6 +10,13 @@
 
 Projeto desenvolvido durante o ignite da @Rocketseat. Construímos uma aplicação completa com roteamento e diversos conceitos importantes do ecossistema React como ContextAPI, useReducer, immer e muito mais.
 
+
+## Próximo nível
+
+- Notificação quando o ciclo termina
+- Responsividade (Em breve)
+- Tema Dark e Light (Em breve)
+
 ## Tecnologias
 
 - React JS
