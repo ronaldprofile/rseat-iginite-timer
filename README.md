@@ -3,7 +3,7 @@
   style="display: flex; align-items: center; gap: .875rem justify-content:center;">
 
   <img src="./src/assets/logo-ignite.svg" style="width: 50px;"/>
-  Ignite Feed
+  Ignite Timer
 </h1>
 
 ## Projeto
