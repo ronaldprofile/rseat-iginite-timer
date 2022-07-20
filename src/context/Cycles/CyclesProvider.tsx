@@ -10,6 +10,8 @@ import {
 } from '../../reducers/cycle/actions'
 import { Cycle } from '../../@types'
 
+import audioNotification from '../../assets/notification.mp3'
+
 interface CreateCycleData {
   task: string
   minutesAmount: number
@@ -56,6 +58,10 @@ export function CyclesProvider({ children }: { children: ReactNode }) {
     )
   }, [cyclesState])
 
+  useEffect(() => {
+    Notification.requestPermission()
+  }, [])
+
   function createNewCycle(data: CreateCycleData) {
     const id = String(new Date().getTime())
 
@@ -73,6 +79,15 @@ export function CyclesProvider({ children }: { children: ReactNode }) {
 
   function markCurrentCycleAsFinished() {
     dispatch(markCycleAsFinishedAction())
+
+    new Audio(audioNotification).play()
+
+    if (Notification.permission === 'granted') {
+      new Notification('ignite timer', {
+        body: `O ciclo para a tarefa ${activeCycle?.task} acabou`,
+        icon: '🔔',
+      })
+    }
   }
 
   function interruptCurrentCycle() {
