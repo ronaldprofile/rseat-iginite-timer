@@ -1,6 +1,6 @@
 import { useCycles } from '../../context/Cycles/useCycles'
 import { formatDistanceToNow } from 'date-fns'
-import ptBR from 'date-fns/locale/pt-BR'
+import { ptBR } from 'date-fns/locale/pt-BR'
 import { HistoryContainer, HistoryList, StatusTask } from './styles'
 
 export function History() {
@@ -22,7 +22,7 @@ export function History() {
           </thead>
 
           <tbody>
-            {cycles.map((cycle) => {
+            {cycles.map(cycle => {
               return (
                 <tr key={cycle.id}>
                   <td>{cycle.task} </td>
@@ -30,20 +30,20 @@ export function History() {
                   <td>
                     {formatDistanceToNow(new Date(cycle.startDate), {
                       addSuffix: true,
-                      locale: ptBR,
+                      locale: ptBR
                     })}
                   </td>
                   <td>
                     {cycle.finishedDate && (
-                      <StatusTask statusColor="green">Concluído</StatusTask>
+                      <StatusTask statusColor='green'>Concluído</StatusTask>
                     )}
 
                     {cycle.interruptedDate && (
-                      <StatusTask statusColor="red">Interrompido</StatusTask>
+                      <StatusTask statusColor='red'>Interrompido</StatusTask>
                     )}
 
                     {!cycle.interruptedDate && !cycle.finishedDate && (
-                      <StatusTask statusColor="yellow">Em andamento</StatusTask>
+                      <StatusTask statusColor='yellow'>Em andamento</StatusTask>
                     )}
                   </td>
                 </tr>
