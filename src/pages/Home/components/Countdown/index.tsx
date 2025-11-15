@@ -9,7 +9,7 @@ export function Countdown() {
     activeCycleId,
     markCurrentCycleAsFinished,
     amountSecondsPassed,
-    setSecondsPassed,
+    setSecondsPassed
   } = useCycles()
 
   const totalSeconds = activeCycle ? activeCycle.minutesAmount * 60 : 0
@@ -22,13 +22,13 @@ export function Countdown() {
   const [secondsLeft, secondsRight] = String(secondsAmount).padStart(2, '0')
 
   useEffect(() => {
-    let interval: number
+    let interval: NodeJS.Timeout
 
     if (activeCycle) {
       interval = setInterval(() => {
         const secondsDifference = differenceInSeconds(
           new Date(),
-          new Date(activeCycle.startDate),
+          new Date(activeCycle.startDate)
         )
 
         if (secondsDifference >= totalSeconds) {
@@ -50,7 +50,7 @@ export function Countdown() {
     activeCycleId,
     markCurrentCycleAsFinished,
     setSecondsPassed,
-    totalSeconds,
+    totalSeconds
   ])
 
   useEffect(() => {
