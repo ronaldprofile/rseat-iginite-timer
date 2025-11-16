@@ -1,26 +1,39 @@
-import type { PropsWithChildren, ReactElement } from 'react'
+import type { ReactElement, ReactNode } from 'react'
 import { ThemeProvider } from 'styled-components'
-import { MemoryRouter } from 'react-router-dom'
+import { MemoryRouter, type MemoryRouterProps } from 'react-router-dom'
 import { defaultTheme } from '../styles/themes/default'
 
 import { render, type RenderOptions } from '@testing-library/react'
 import { CyclesProvider } from '@/context/Cycles/CyclesProvider'
 
-const AllTheProviders = ({ children }: PropsWithChildren) => {
+const AllTheProviders = ({
+  children,
+  memoryRouterOptions
+}: {
+  children: ReactNode
+  memoryRouterOptions?: MemoryRouterProps
+}) => {
   return (
     <ThemeProvider theme={defaultTheme}>
-      <MemoryRouter>
+      <MemoryRouter {...memoryRouterOptions}>
         <CyclesProvider>{children}</CyclesProvider>
       </MemoryRouter>
     </ThemeProvider>
   )
 }
 
-const customRender = (
-  ui: ReactElement,
-  options?: Omit<RenderOptions, 'wrapper'>
-) => {
-  return render(ui, { wrapper: AllTheProviders, ...options })
+interface CustomRenderOptions extends Omit<RenderOptions, 'wrapper'> {
+  memoryRouterOptions?: MemoryRouterProps
+}
+const customRender = (ui: ReactElement, options?: CustomRenderOptions) => {
+  return render(ui, {
+    wrapper: ({ children }) =>
+      AllTheProviders({
+        children,
+        memoryRouterOptions: options?.memoryRouterOptions
+      }),
+    ...options
+  })
 }
 
 export * from '@testing-library/react'
