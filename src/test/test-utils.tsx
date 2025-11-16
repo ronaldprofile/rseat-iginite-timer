@@ -4,11 +4,14 @@ import { MemoryRouter } from 'react-router-dom'
 import { defaultTheme } from '../styles/themes/default'
 
 import { render, type RenderOptions } from '@testing-library/react'
+import { CyclesProvider } from '@/context/Cycles/CyclesProvider'
 
 const AllTheProviders = ({ children }: PropsWithChildren) => {
   return (
     <ThemeProvider theme={defaultTheme}>
-      <MemoryRouter>{children}</MemoryRouter>
+      <MemoryRouter>
+        <CyclesProvider>{children}</CyclesProvider>
+      </MemoryRouter>
     </ThemeProvider>
   )
 }

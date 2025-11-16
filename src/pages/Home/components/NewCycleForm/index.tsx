@@ -5,7 +5,7 @@ import {
   FormContainer,
   InputGroup,
   MinutesAmountInput,
-  TaskInput,
+  TaskInput
 } from './styles'
 
 export function NewCycleForm() {
@@ -15,27 +15,27 @@ export function NewCycleForm() {
   return (
     <FormContainer>
       <InputGroup>
-        <label htmlFor="task">Vou trabalhar em</label>
+        <label htmlFor='task'>Vou trabalhar em</label>
         <TaskInput
-          type="text"
-          id="task"
-          list="tasks-worked"
-          placeholder="nome para o seu projeto"
+          type='text'
+          id='task'
+          list='tasks-worked'
+          placeholder='nome para o seu projeto'
           {...register('task')}
           disabled={!!activeCycle}
         />
 
-        <datalist id="tasks-worked">
-          <option value="Calmap" />
+        <datalist id='tasks-worked'>
+          <option value='Calmap' />
         </datalist>
       </InputGroup>
 
       <InputGroup>
-        <label htmlFor="minutesAmount">durante</label>
+        <label htmlFor='minutesAmount'>durante</label>
         <MinutesAmountInput
-          type="number"
-          id="minutesAmount"
-          placeholder="00"
+          type='number'
+          id='minutesAmount'
+          placeholder='00'
           step={5}
           min={5}
           max={60}
