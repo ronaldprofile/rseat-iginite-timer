@@ -26,13 +26,15 @@
       ]
     },
     "types": [
-      "@testing-library/jest-dom"
+      "cypress",
+      "node",
+      "@testing-library/jest-dom",
     ]
   },
   "include": [
     "src",
     "jest.setup.ts",
-    "jest.config.ts"
+    "jest.config.ts",
   ],
   "references": [
     {
