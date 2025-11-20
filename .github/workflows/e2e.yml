@@ -23,3 +23,6 @@ jobs:
           wait-on: 'http://localhost:4173'
           wait-on-timeout: 120
           browser: chrome
+
+        env: 
+          CYPRESS_BASE_URL: 'http://localhost:4173'
