@@ -11,6 +11,7 @@ jobs:
   cypress-run:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Cypress Run
@@ -19,6 +20,6 @@ jobs:
           build: npm run build
           start: npm run start
 
-          wait-on: 'http://localhost:5173'
+          wait-on: 'http://localhost:4173'
           wait-on-timeout: 120
           browser: chrome
